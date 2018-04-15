@@ -7,7 +7,9 @@ import java.util.*
 import java.util.regex.Pattern
 
 
-data class FileDescriptor(val name: String?, val fileName: String, val intro: String?, val outro: String?, val code: String?)
+data class FileDescriptor(val name: String?, val fileName: String, val intro: String?, val outro: String?, val publish: String?, val code: String?) {
+
+}
 
 fun main(args: Array<String>) {
 
@@ -37,19 +39,23 @@ fun main(args: Array<String>) {
                     val outroRegex = "Outro:(.*)".toRegex()
                     val outro = tokenize(fileContents, outroRegex)
 
+                    val publishRegex = "Publish:(.*)".toRegex()
+                    val publish = tokenize(fileContents, publishRegex)
+
                     val codeRegex = "\\*/(.*)".toRegex(RegexOption.DOT_MATCHES_ALL)
                     val code = tokenize(fileContents, codeRegex)
 
-                    createFile(FileDescriptor(name, fileName, intro, outro, code))
+                    createFile(FileDescriptor(name, fileName, intro, outro, publish, code))
                 })
     })
 }
 
 fun createFile(fileDescriptor: FileDescriptor) {
-    File("""/Users/mplacona/Desktop/websites/realkotlin.com/_tutorials/${fileDescriptor.fileName}.md""").bufferedWriter().use { out ->
+    File("""/Users/mplacona/Desktop/websites/realkotlin.com/_tutorials/${fileDescriptor.publish}-${fileDescriptor.fileName}.md""").bufferedWriter().use { out ->
         out.writeLn("---")
         out.writeLn("title: \"${fileDescriptor.name}\"")
         out.writeLn("excerpt: \"${fileDescriptor.intro}\"")
+        out.writeLn("date: \"${fileDescriptor.publish}\"")
         out.writeLn("author: Marcos Placona")
         out.writeLn("---")
         out.newLine()
