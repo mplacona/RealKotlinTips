@@ -31,4 +31,6 @@ out/
 lib/kotlin-runtime.jar
 */target/*
 .idea/
+!*/.idea/fileTemplates/Real Kotlin File.kt
+!*/.idea/fileTemplates/Real Kotlin Spek.kt
 *.iml
