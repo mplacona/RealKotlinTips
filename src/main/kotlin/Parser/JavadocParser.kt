@@ -1,15 +1,10 @@
 import java.io.BufferedWriter
 import java.io.File
+import java.nio.file.Files
+import java.nio.file.Paths
 import java.text.Normalizer
 import java.util.*
 import java.util.regex.Pattern
-import javax.script.*
-import java.nio.file.Files.isRegularFile
-import jdk.nashorn.internal.objects.NativeArray.forEach
-import java.nio.file.Files
-import java.nio.file.Paths
-
-
 
 
 data class FileDescriptor(val name: String?, val fileName: String, val intro: String?, val outro: String?, val code: String?)
@@ -42,10 +37,10 @@ fun main(args: Array<String>) {
                     val outroRegex = "Outro:(.*)".toRegex()
                     val outro = tokenize(fileContents, outroRegex)
 
-                    val codeRegex = "import.*".toRegex(RegexOption.DOT_MATCHES_ALL)
-                    val code = tokenize(fileContents, codeRegex, index = 0)
+                    val codeRegex = "\\*/(.*)".toRegex(RegexOption.DOT_MATCHES_ALL)
+                    val code = tokenize(fileContents, codeRegex)
 
-                    //createFile(FileDescriptor(name, fileName, intro, outro, code))
+                    createFile(FileDescriptor(name, fileName, intro, outro, code))
                 })
     })
 }
