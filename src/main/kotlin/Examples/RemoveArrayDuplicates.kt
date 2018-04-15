@@ -9,11 +9,11 @@ package Examples
 
 import java.util.*
 
-fun removeArrayDuplicates(duplicates: Array<String>): Set<String> {
-    return Arrays.asList(*duplicates).toSet()
+fun removeArrayDuplicates(duplicates: Array<String>): Array<String> {
+    return Arrays.asList(*duplicates).toSet().toTypedArray()
 }
 
 fun main(args: Array<String>) {
     val duplicates = arrayOf("a", "b", "c", "a", "c")
-    print(removeArrayDuplicates(duplicates))
+    println(Arrays.toString(removeArrayDuplicates(duplicates)))
 }

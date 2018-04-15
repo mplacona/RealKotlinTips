@@ -1,17 +1,11 @@
 import Examples.capitalizeAll
 import Examples.isNumeric
 import Examples.isWeekend
-import org.junit.Assert.assertEquals
 import org.jetbrains.spek.api.Spek
-import org.jetbrains.spek.api.dsl.context
-import org.jetbrains.spek.api.dsl.describe
-import org.jetbrains.spek.api.dsl.it
-import org.junit.platform.runner.JUnitPlatform
-import org.junit.runner.RunWith
+import org.jetbrains.spek.api.dsl.*
+import org.junit.jupiter.api.Assertions.assertEquals
 import java.util.*
 
-
-@RunWith(JUnitPlatform::class)
 class ExtensionFunctionSpek: Spek({
     context("Extension functions in Kotlin"){
         describe("A string capitaliser") {
