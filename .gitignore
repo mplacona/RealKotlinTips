@@ -30,7 +30,7 @@ out/
 .DS_Store/
 lib/kotlin-runtime.jar
 */target/*
-.idea/
-!*/.idea/fileTemplates/Real Kotlin File.kt
-!*/.idea/fileTemplates/Real Kotlin Spek.kt
+.idea/libraries
+.idea/modules
+.idea/*.xml
 *.iml
