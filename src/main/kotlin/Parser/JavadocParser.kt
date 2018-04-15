@@ -4,40 +4,53 @@ import java.text.Normalizer
 import java.util.*
 import java.util.regex.Pattern
 import javax.script.*
+import java.nio.file.Files.isRegularFile
+import jdk.nashorn.internal.objects.NativeArray.forEach
+import java.nio.file.Files
+import java.nio.file.Paths
+
+
 
 
 data class FileDescriptor(val name: String?, val fileName: String, val intro: String?, val outro: String?, val code: String?)
 
 fun main(args: Array<String>) {
-    val fileContents = File("/Users/mplacona/Projects/Kotlin/Tricks/src/main/kotlin/Examples/RemoveArrayDuplicates.kt").readText()
 
-    val nameRegex = "Name:(.*)".toRegex()
-    val name = tokenize(fileContents, nameRegex)
-    val fileName = toSlug(name)
+//    val engine = ScriptEngineManager().getEngineByExtension("kts")
+//    val myCode = """
+//        import java.util.*
+//        val duplicates = arrayOf("a", "b", "c", "a", "c")
+//        val uniques = Arrays.asList(*duplicates).toSet()
+//        print(uniques)
+//    """
+//    println(myCode)
+//    engine.eval(myCode)
 
-    val introRegex = "Intro:(.*)".toRegex()
-    val intro = tokenize(fileContents, introRegex)
+    Files.walk(Paths.get("/Users/mplacona/Projects/Kotlin/Tricks/src/main/kotlin/Examples/")).use({ paths ->
+        paths
+                .filter({ it.toFile().isFile })
+                .filter({ it.toFile().extension == "kt" })
+                .forEach({
+                    val fileContents = File(it.toUri()).readText()
+                    val nameRegex = "Name:(.*)".toRegex()
+                    val name = tokenize(fileContents, nameRegex)
+                    val fileName = toSlug(name)
 
-    val outroRegex = "Outro:(.*)".toRegex()
-    val outro = tokenize(fileContents, outroRegex)
+                    val introRegex = "Intro:(.*)".toRegex()
+                    val intro = tokenize(fileContents, introRegex)
 
-    val codeRegex = "import.*".toRegex(RegexOption.DOT_MATCHES_ALL)
-    val code = tokenize(fileContents, codeRegex, index = 0)
+                    val outroRegex = "Outro:(.*)".toRegex()
+                    val outro = tokenize(fileContents, outroRegex)
 
-    //createFile(FileDescriptor(name, fileName, intro, outro, code))
+                    val codeRegex = "import.*".toRegex(RegexOption.DOT_MATCHES_ALL)
+                    val code = tokenize(fileContents, codeRegex, index = 0)
 
-    val engine = ScriptEngineManager().getEngineByExtension("kts")
-    val myCode = """
-        import java.util.*
-        val duplicates = arrayOf("a", "b", "c", "a", "c")
-        val uniques = Arrays.asList(*duplicates).toSet()
-        print(uniques)
-    """
-    println(myCode)
-    engine.eval(myCode)
+                    //createFile(FileDescriptor(name, fileName, intro, outro, code))
+                })
+    })
 }
 
-fun createFile(fileDescriptor: FileDescriptor){
+fun createFile(fileDescriptor: FileDescriptor) {
     File("""/Users/mplacona/Desktop/websites/realkotlin.com/_tutorials/${fileDescriptor.fileName}.md""").bufferedWriter().use { out ->
         out.writeLn("---")
         out.writeLn("title: \"${fileDescriptor.name}\"")
