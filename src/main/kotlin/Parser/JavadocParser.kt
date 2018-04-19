@@ -1,29 +1,31 @@
 import java.io.BufferedWriter
 import java.io.File
+import java.io.FileInputStream
 import java.nio.file.Files
 import java.nio.file.Paths
 import java.text.Normalizer
 import java.util.*
 import java.util.regex.Pattern
 
+data class FileDescriptor(val name: String?, val fileName: String, val intro: String?, val outro: String?, val publish: String?, val code: String?)
 
-data class FileDescriptor(val name: String?, val fileName: String, val intro: String?, val outro: String?, val publish: String?, val code: String?) {
+private fun readLocalProperties(): Properties{
+    val properties = Properties()
+    val propertiesFile = System.getProperty("user.dir") + "/local.properties"
 
+    val inputStream = FileInputStream(propertiesFile)
+    properties.load(inputStream)
+
+    return properties
 }
 
 fun main(args: Array<String>) {
 
-//    val engine = ScriptEngineManager().getEngineByExtension("kts")
-//    val myCode = """
-//        import java.util.*
-//        val duplicates = arrayOf("a", "b", "c", "a", "c")
-//        val uniques = Arrays.asList(*duplicates).toSet()
-//        print(uniques)
-//    """
-//    println(myCode)
-//    engine.eval(myCode)
+    val properties = readLocalProperties()
+    val examplePath = properties["examplePath"].toString()
+    val exportPath = properties["blogExportPath"].toString()
 
-    Files.walk(Paths.get("/Users/mplacona/Projects/Kotlin/Tricks/src/main/kotlin/Examples/")).use({ paths ->
+    Files.walk(Paths.get(examplePath)).use({ paths ->
         paths
                 .filter({ it.toFile().isFile })
                 .filter({ it.toFile().extension == "kt" })
@@ -45,13 +47,13 @@ fun main(args: Array<String>) {
                     val codeRegex = "\\*/(.*)".toRegex(RegexOption.DOT_MATCHES_ALL)
                     val code = tokenize(fileContents, codeRegex)
 
-                    createFile(FileDescriptor(name, fileName, intro, outro, publish, code))
+                    createFile(FileDescriptor(name, fileName, intro, outro, publish, code), exportPath)
                 })
     })
 }
 
-fun createFile(fileDescriptor: FileDescriptor) {
-    File("""/Users/mplacona/Desktop/websites/realkotlin.com/_tutorials/${fileDescriptor.publish}-${fileDescriptor.fileName}.md""").bufferedWriter().use { out ->
+fun createFile(fileDescriptor: FileDescriptor, path: String) {
+    File("$path/${fileDescriptor.publish}-${fileDescriptor.fileName}.md").bufferedWriter().use { out ->
         out.writeLn("---")
         out.writeLn("title: \"${fileDescriptor.name}\"")
         out.writeLn("excerpt: \"${fileDescriptor.intro}\"")
