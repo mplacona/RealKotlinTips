@@ -7,7 +7,3 @@ test:
         # Collect the JUnit reports
         - mkdir -p $CIRCLE_TEST_REPORTS/reports/junit
         - find build/test-results/junit-platform -name "*.xml" -exec cp {} $CIRCLE_TEST_REPORTS/reports/junit/ \;
-
-        # Collect the HTML Test reports
-        - mkdir -p $CIRCLE_TEST_REPORTS/reports/junit/html
-        - cp -r /home/ubuntu/RealKotlinTips/build/reports/tests $CIRCLE_TEST_REPORTS/reports/junit/html
