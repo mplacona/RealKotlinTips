@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Assertions
 class ${NAME}: Spek({
     context("${NAME}"){
         describe("${DESCRIPTION}") {
-            it("${BEHAVIOUS}") {
+            it("${BEHAVIOUR}") {
                 val expected = HashMap<String, String>()
                 val actual = Examples.${METHOD_NAME}
                 Assertions.assertEquals(expected, actual)
