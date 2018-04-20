@@ -10,4 +10,4 @@ test:
 
         # Collect the HTML Test reports
         - mkdir -p $CIRCLE_TEST_REPORTS/reports/junit/html
-        - cp -r /home/ubuntu/RealKotlin/build/reports/tests $CIRCLE_TEST_REPORTS/reports/junit/html
+        - cp -r /home/ubuntu/RealKotlinTips/build/reports/tests $CIRCLE_TEST_REPORTS/reports/junit/html
