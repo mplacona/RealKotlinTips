@@ -4,8 +4,8 @@ package Examples
 /**
  * Name: Functions With Expression Body
  *
- * Intro: When a function returns a single expression, the curly braces can be omitted and the body is specified after a = symbol
- * Outro: Explicitly declaring the return type is optional when this can be inferred by the compiler
+ * Intro: When a function returns a single expression, the curly braces can be omitted and the body is specified after a = symbol.
+ * Outro: Explicitly declaring the return type is optional when this can be inferred by the compiler.
  * Publish: 2018-04-11
  */
 

@@ -1,5 +1,5 @@
 buildscript {
-    ext.kotlin_version = '1.2.31'
+    ext.kotlin_version = '1.2.40'
     ext.spek_version = '1.1.5'
     ext.junit_version = '1.1.1'
 
@@ -53,3 +53,10 @@ compileKotlin {
 compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
+
+task(runGenerator, dependsOn: 'classes', type: JavaExec) {
+    main = 'JavadocParserKt'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+defaultTasks 'runGenerator'
