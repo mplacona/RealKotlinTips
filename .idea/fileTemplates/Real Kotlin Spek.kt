@@ -14,15 +14,9 @@ class ${NAME}: Spek({
         describe("${DESCRIPTION}") {
             it("${BEHAVIOUR}") {
                 val expected = HashMap<String, String>()
-                val actual = Examples.${METHOD_NAME}
+                val actual = Examples.${METHOD_NAME}()
                 Assertions.assertEquals(expected, actual)
             }
         }
     }
 })
-
-
- 
-fun main(args: Array<String>) {
-    
-}
