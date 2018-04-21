@@ -23,7 +23,7 @@ I would ❤️ some contributions from other authors here. Just follow these ste
 ## Contributing - The extra mile
 Posts are automatically generated after each example, which gets converted into markdown using the metadata added in JavaDocs style at the top of each file.
 
-To generate posts and run them locally and make sure everything looks good, clone [this repository](https://github.com/mplacona/realkotlin.com) and check its README file to see how to run the website.
+To generate posts and run them locally and make sure everything looks good, clone [this repository](https://github.com/mplacona/realkotlin.com) and check its README file to see how to [run the website](https://github.com/mplacona/realkotlin.com#running).
 
 1. In the file-root of the website copy the path to `_tutorials` 
 2. Back in this Kotlin project 👆 rename `sample-local.properties` to `local.properties`. 
