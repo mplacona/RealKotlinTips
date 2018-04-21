@@ -1,3 +1,5 @@
+package Examples
+
 import org.jetbrains.spek.api.Spek
 import org.jetbrains.spek.api.dsl.context
 import org.jetbrains.spek.api.dsl.describe
@@ -10,7 +12,7 @@ class RemoveArrayDuplicatesSpek: Spek({
             val duplicates = arrayOf("a", "b", "c", "a", "c")
             it("should return a set of distinct items") {
                 val expected = duplicates.distinct().toTypedArray()
-                val distinctItems = Examples.removeArrayDuplicates(duplicates)
+                val distinctItems = removeArrayDuplicates(duplicates)
                 Assertions.assertArrayEquals(expected, distinctItems)
             }
         }

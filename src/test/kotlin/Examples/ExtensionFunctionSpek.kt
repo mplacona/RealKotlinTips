@@ -1,3 +1,5 @@
+package Examples
+
 import Examples.capitalizeAll
 import Examples.isNumeric
 import Examples.isWeekend

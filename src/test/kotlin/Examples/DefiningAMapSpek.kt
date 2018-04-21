@@ -1,3 +1,5 @@
+package Examples
+
 import org.jetbrains.spek.api.Spek
 import org.jetbrains.spek.api.dsl.context
 import org.jetbrains.spek.api.dsl.describe
@@ -13,7 +15,7 @@ class DefiningAMapSpek: Spek({
                 expected["keyB"] = "valueB"
                 expected["keyC"] = "valueC"
 
-                val actual = Examples.createImplicitMap()
+                val actual = createImplicitMap()
                 Assertions.assertEquals(expected, actual)
             }
         }
