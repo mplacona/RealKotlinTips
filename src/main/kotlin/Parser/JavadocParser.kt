@@ -59,6 +59,8 @@ fun createFile(fileDescriptor: FileDescriptor, path: String) {
         out.writeLn("excerpt: \"${fileDescriptor.intro}\"")
         out.writeLn("date: \"${fileDescriptor.publish}\"")
         out.writeLn("author: Marcos Placona")
+        out.writeLn("header:")
+        out.writeLn("    og_image: assets/images/screenshots/${fileDescriptor.fileName}.png")
         out.writeLn("---")
         out.newLine()
         out.writeLn("```kotlin")
