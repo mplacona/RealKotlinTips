@@ -4,7 +4,7 @@ package Examples
  * Name: Extension functions in Kotlin
  *
  * Intro: In most programming languages you have to derive a new class. In Kotlin you can extend a class with new functionality.
- * Outro: An extension function is a member function of a class that is defined outside the class and valiud throughout your project.
+ * Outro: An extension function is a member function of a class that is defined outside the class and valid throughout your project.
  * Publish: 2018-04-16
  */
 
