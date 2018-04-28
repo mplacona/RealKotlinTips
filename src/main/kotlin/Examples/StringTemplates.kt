@@ -4,9 +4,9 @@ package Examples
 /**
  * Name: String Templates in Kotlin
  *
- * Intro: Concatenating string with a + is a waste of time when you can use string templates.
+ * Intro: Concatenating strings with a + is a waste of time when you can use string templates.
  * Outro: Strings in Kotlin may contain template expressions that are evaluated and whose results are concatenated into the string.
- * Publish: 2018-05-01
+ * Publish: 2018-04-26
  */
 
 fun simpleTemplate(name: String) = "Learn some cool Kotlin tips with $name"
