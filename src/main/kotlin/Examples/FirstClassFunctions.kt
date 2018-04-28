@@ -4,7 +4,7 @@ package Examples
 /**
  * Name: Functions are first-class citizens in Kotlin
  *
- * Intro: Kotlin functions are first-class, which means they can be stored in variables and data structures, passed as arguments to and returned from other functions
+ * Intro: Kotlin functions are first-class citizens, which means they can be stored in variables and data structures, passed as arguments to and returned from other functions
  * Outro: Lambda expressions like the above are 'function literals' as they are not declared, but passed immediately as an expression. You can read more in [Lambda Expressions](http://kotlinlang.org/docs/reference/lambdas.html).
  * Publish: 2018-05-10
  */
