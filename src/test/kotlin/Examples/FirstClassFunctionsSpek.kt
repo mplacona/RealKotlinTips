@@ -31,7 +31,7 @@ class FirstClassFunctionsSpek: Spek({
             it("should return the sum of two numbers") {
                 val expected = 42
 
-                val actual = sum(21, 21)
+                val actual = add(21, 21)
                 Assertions.assertEquals(expected, actual)
             }
 
