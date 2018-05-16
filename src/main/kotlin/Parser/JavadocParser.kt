@@ -7,7 +7,7 @@ import java.text.Normalizer
 import java.util.*
 import java.util.regex.Pattern
 
-data class FileDescriptor(val name: String?, val fileName: String, val intro: String?, val outro: String?, val publish: String?, val code: String?)
+data class FileDescriptor(val name: String?, val fileName: String, val intro: String?, val outro: String?, val publish: String?, val author: String?, val code: String?)
 
 private fun readLocalProperties(): Properties{
     val properties = Properties()
@@ -44,10 +44,13 @@ fun main(args: Array<String>) {
                     val publishRegex = "Publish:(.*)".toRegex()
                     val publish = tokenize(fileContents, publishRegex)
 
+                    val authorRegex = "Author:(.*)".toRegex()
+                    val author = tokenize(fileContents, authorRegex)
+
                     val codeRegex = "\\*/(.*)".toRegex(RegexOption.DOT_MATCHES_ALL)
                     val code = tokenize(fileContents, codeRegex)
 
-                    createFile(FileDescriptor(name, fileName, intro, outro, publish, code), exportPath)
+                    createFile(FileDescriptor(name, fileName, intro, outro, publish, author, code), exportPath)
                 })
     })
 }
@@ -58,7 +61,7 @@ fun createFile(fileDescriptor: FileDescriptor, path: String) {
         out.writeLn("title: \"${fileDescriptor.name}\"")
         out.writeLn("excerpt: \"${fileDescriptor.intro}\"")
         out.writeLn("date: \"${fileDescriptor.publish}\"")
-        out.writeLn("author: Marcos Placona")
+        out.writeLn("author: " + if (!fileDescriptor.author.isNullOrBlank()) fileDescriptor.author else "Marcos Placona")
         out.writeLn("header:")
         out.writeLn("    og_image: assets/images/screenshots/${fileDescriptor.fileName}.png")
         out.writeLn("---")

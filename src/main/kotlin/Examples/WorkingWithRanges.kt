@@ -2,11 +2,12 @@ package Examples
 
 
 /**
- * Name: Working With Ranges
+ * Name: Working With Ranges in Kotlin
  *
  * Intro: Kotlin provides a simple and intuitive way to create ranges.
- * Outro: With Kotlin you can easily create ranges including ranges in reverse order as well as those with defined steps.
- * Publish:
+ * Outro:You can easily create ranges including ranges in reverse order as well as those with defined steps.
+ * Publish: 2018-05-17
+ * Author: Vincent Nyanga
  */
 
 // Range from 1 to 5
