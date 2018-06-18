@@ -25,11 +25,11 @@ fun main(args: Array<String>) {
     val examplePath = properties["examplePath"].toString()
     val exportPath = properties["blogExportPath"].toString()
 
-    Files.walk(Paths.get(examplePath)).use({ paths ->
+    Files.walk(Paths.get(examplePath)).use { paths ->
         paths
-                .filter({ it.toFile().isFile })
-                .filter({ it.toFile().extension == "kt" })
-                .forEach({
+                .filter { it.toFile().isFile }
+                .filter { it.toFile().extension == "kt" }
+                .forEach {
                     val fileContents = File(it.toUri()).readText()
                     val nameRegex = "Name:(.*)".toRegex()
                     val name = tokenize(fileContents, nameRegex)
@@ -51,8 +51,8 @@ fun main(args: Array<String>) {
                     val code = tokenize(fileContents, codeRegex)
 
                     createFile(FileDescriptor(name, fileName, intro, outro, publish, author, code), exportPath)
-                })
-    })
+                }
+    }
 }
 
 fun createFile(fileDescriptor: FileDescriptor, path: String) {
