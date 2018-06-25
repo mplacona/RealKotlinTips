@@ -16,12 +16,12 @@ fun main(args: Array<String>) {
     user1.age = 34
     user1.website = "https://www.placona.co.uk"
     println(user1)
-    // User(name=Marcos Placona, age=34, website=https://www.placona.co.uk)
+    //User(name=Marcos Placona, age=34, website=https://www.placona.co.uk, active=true)
 
 
     println(User("RealKotlin").apply {
         age = 1
         website = "https://www.realkotlin.com"
     })
-    //User(name=RealKotlin, age=1, website=https://www.realkotlin.com)
+    //User(name=RealKotlin, age=1, website=https://www.realkotlin.com, active=true)
 }
