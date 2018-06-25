@@ -9,7 +9,7 @@ package Examples
  * Publish: 2018-06-19
  */
 
-data class User(val name: String, var age: Int = 0, var website: String = "")
+data class User(val name: String, var age: Int = 0, var website: String = "", val active: Boolean = true)
 
 fun main(args: Array<String>) {
     val user1 = User("Marcos Placona")
