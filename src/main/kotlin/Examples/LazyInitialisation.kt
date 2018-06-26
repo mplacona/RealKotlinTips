@@ -3,7 +3,7 @@ package Examples
 /**
  * Name: Lazy initialisation in Kotlin
  *
- * Intro: Just like [Late Initialisation]({% post_url 2018-05-01-late-initialisation-in-kotlin %}) `lazy` lets you initialise a property only when you need it, but it also remembers its value for future calls.
+ * Intro: Just like [Late Initialisation](/tutorials/2018-05-01-late-initialisation-in-kotlin) `lazy` lets you initialise a property only when you need it, but it also remembers its value for future calls.
  * Outro: `lazy` properties are also thread safe as they run in `synchronized` mode. If using `lazy` on the main thread and nowhere else, you may avoid the `synchronized` overhead by removing its thread safety. This mode should be used only when high performance is crucial and the `lazy` instance is guaranteed never to be initialised from more than one thread.
  * Publish: 2018-05-03
  */
